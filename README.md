@@ -1,3 +1,12 @@
+# Imagens do Desafio
+
+## Tela-home
+![Home](/@figma/home.png)
+
+## Tela-post
+![Post](/@figma/post.png)
+
+
 # Sobre o desafio
 
 Nesse desafio, você vai desenvolver uma aplicação que utilizará da API do GitHub para buscar issues de um repositório, dados do seu perfil e exibir elas como um blog.
