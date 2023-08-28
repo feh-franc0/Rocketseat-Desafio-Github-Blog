@@ -13,7 +13,9 @@ export function Home() {
           <h3> Publicações </h3>
           <span> 6 publicações </span>
         </HeaderContent>
+
         <SearchForm />
+        
         <ListPublications />
       </TransactionsContainer>
     </Container>

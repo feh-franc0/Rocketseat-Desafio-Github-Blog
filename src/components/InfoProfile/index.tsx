@@ -1,19 +1,57 @@
 import { Container, Content, IconText, IconTextLink, ImgProfile, InfosProfile } from "./styles";
 
-import avatar from "../../assets/avatar.png";
 import githubBrands from "../../assets/icons/github-brands.svg";
 import buildingSolid from "../../assets/icons/building-solid.svg";
 import userGroupSolid from "../../assets/icons/user-group-solid.svg";
 import arrowUpRightFromSquareSolid from "../../assets/icons/arrow-up-right-from-square-solid.svg";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-export function InfoProfile() {
+interface GitHubUserData {
+  login: string;
+  avatar_url: string;
+  name: string;
+  company: string;
+  bio: string;
+  followers: number;
+}
+
+export function InfoProfile() { 
+  const [login, setLogin] = useState<string>('')
+  const [avatarUrl, setAvatarUrl] = useState<string>('')
+  const [name, setName] = useState<string>('');
+  const [company, setCompany] = useState<string>();
+  const [bio, setBio] = useState<string>()
+  const [followersCount, setFollowersCount] = useState<number>(0);
+
+  const fetchUserGithubData = async () => {
+    try {
+      const {data} = await axios.get<GitHubUserData>(`https://api.github.com/users/feh-franc0`)
+      const {avatar_url,bio,followers,company,login,name} = data
+      
+      setLogin(login)
+      setAvatarUrl(avatar_url)
+      setName(name)
+      setCompany(company)
+      setBio(bio)
+      setFollowersCount(followers)
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    fetchUserGithubData()
+  }, [])
+
   return (
     <Container>
       <Content>
-        <ImgProfile src={avatar} alt="" />
+        <ImgProfile src={avatarUrl} alt="" />
 
         <InfosProfile>
-          <h1>Cameron Williamson</h1>
+          <h1>{name}</h1>
 
           <IconTextLink href="#">
             <div>
@@ -26,26 +64,22 @@ export function InfoProfile() {
 
           <div className="desc">
             <span>
-              Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu
-              Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu
-              viverra massa quam dignissim aenean malesuada suscipit. Nunc,
-              viverra massa quam dignissim aenean malesuada suscipit. Nunc,
-              volutpat pulvinar vel mass.
+              {bio}
             </span>
           </div>
 
           <div className="infos">
             <IconText>
               <img src={githubBrands} alt="" style={{ marginRight: '8px', width: '18px' }} />
-              cameronwll
+              {login}
             </IconText>
             <IconText>
             <img src={buildingSolid} alt="" style={{ marginRight: '8px', width: '18px' }} />
-              Rocketseat
+              {company}
             </IconText>
             <IconText>
             <img src={userGroupSolid} alt="" style={{ marginRight: '8px', width: '18px' }} />
-              32 seguidores
+              {followersCount} seguidores
             </IconText>
           </div>
         </InfosProfile>
