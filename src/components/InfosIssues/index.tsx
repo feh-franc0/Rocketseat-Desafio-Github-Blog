@@ -6,8 +6,24 @@ import commentSolid from "../../assets/icons/comment-solid.svg";
 import chevronLeftSolid from "../../assets/icons/chevron-left-solid.svg";
 import arrowUpRightFromSquareSolid from "../../assets/icons/arrow-up-right-from-square-solid.svg";
 import { Link } from "react-router-dom";
+import { differenceInDays, parseISO } from 'date-fns';
 
-export function InfosIssues() {
+interface Props {
+  title?: string;
+  user?: string;
+  created_at?: string;
+  comment?: number
+  urlGithub?: string
+}
+
+export function InfosIssues( {title = '', user = '',comment = 0, created_at = '', urlGithub = ''}: Props ) {
+  console.log({title, user,comment, created_at})
+  const createdAt = created_at;
+  const parsedCreatedAt = parseISO(createdAt);
+
+  const today = new Date();
+  const daysSinceCreation = differenceInDays(today, parsedCreatedAt);
+
   return (
     <Container>
       <Content>
@@ -21,9 +37,9 @@ export function InfosIssues() {
               </Link>
             </BackToHome>
 
-            <IconTextLink href="#">
+            <IconTextLink href={urlGithub} target="_blank">
               <div>
-                Github
+                ver no github
               </div>
               <div>
                 <img src={arrowUpRightFromSquareSolid} alt="" style={{ marginLeft: '8px', width: '12px', height: '12px' }}/>
@@ -31,20 +47,20 @@ export function InfosIssues() {
             </IconTextLink>
           </Header>
 
-          <h1>JavaScript data types and data structures</h1>
+          <h1>{title}</h1>
 
           <div className="infos">
             <IconText>
               <img src={githubBrands} alt="" style={{ marginRight: '8px', width: '18px' }} />
-              cameronwll
+              {user}
             </IconText>
             <IconText>
             <img src={calendarDaySolid} alt="" style={{ marginRight: '8px', width: '18px' }} />
-              Há 1 dia
+              Há {daysSinceCreation} {daysSinceCreation === 1 ? 'dia' : 'dias'}.
             </IconText>
             <IconText>
             <img src={commentSolid} alt="" style={{ marginRight: '8px', width: '18px' }} />
-              32 seguidores
+              {comment} comentários
             </IconText>
           </div>
         </InfosProfile>

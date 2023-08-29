@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 interface User {
-  avatar_url: string;
   login: string;
 }
 
@@ -18,7 +17,7 @@ interface Issue {
   html_url: string;
   number: number;
   comments: number;
-  user: User
+  user: User;
 }
 
 export function Post() {
@@ -46,7 +45,7 @@ export function Post() {
   return (
     <div>
       <Container>
-        <InfosIssues />
+        <InfosIssues title={issueDatas?.title} created_at={issueDatas?.created_at} comment={issueDatas?.comments} user={issueDatas?.user.login} urlGithub={issueDatas?.html_url}/>
         <ContentPost />
       </Container>
     </div>
