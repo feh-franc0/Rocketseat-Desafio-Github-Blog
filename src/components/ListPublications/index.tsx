@@ -3,6 +3,7 @@ import { PublicationsList, Publication } from "./styles";
 import ListPosts from "../../contexts/ListPosts";
 import { useContext } from "react";
 import { differenceInDays, parseISO } from 'date-fns';
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 export function ListPublications() {
 
@@ -32,7 +33,11 @@ export function ListPublications() {
           >
             <h2>{issue.title}</h2>
             <div>há {daysSinceCreation} {daysSinceCreation === 1 ? 'dia' : 'dias'}.</div>
-            <p>{issue.body.length > 300 ? issue.body.slice(0, 100 - 3) + "..." : issue.body}</p>
+            <p>
+              <ReactMarkdown>
+                {issue.body.length > 300 ? issue.body.slice(0, 100 - 3) + "..." : issue.body}
+              </ReactMarkdown>
+            </p>
           </Link>
         </Publication>
       );
