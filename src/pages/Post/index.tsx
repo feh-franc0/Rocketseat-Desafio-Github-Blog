@@ -40,13 +40,13 @@ export function Post() {
     handleSearch();
   }, []);
 
-  console.log("issueDatas: ", issueDatas)
+  console.log("issueDatas: ", issueDatas?.body)
 
   return (
     <div>
       <Container>
         <InfosIssues title={issueDatas?.title} created_at={issueDatas?.created_at} comment={issueDatas?.comments} user={issueDatas?.user.login} urlGithub={issueDatas?.html_url}/>
-        <ContentPost />
+        <ContentPost bodyText={issueDatas?.body}/>
       </Container>
     </div>
   )

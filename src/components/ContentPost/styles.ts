@@ -11,41 +11,21 @@ export const Content = styled.div`
   gap: 24px;
   display: flex;
   flex-direction: column;
-`;
+  color: ${({theme}) => theme.white};
 
-export const TextPost = styled.div`
-  color: ${({theme}) => theme["Base-Text"]};
-
-  p {
-    span {
+  & > p {
+    color: ${({theme}) => theme["Base-Text"]};
+    & > a{
       color: ${({theme}) => theme.Blue};
-      text-decoration: underline;
     }
   }
+  & > pre {
+    padding: 16px;
+    border-radius: 2px;
+    color: ${({theme}) => theme.white};
+    background-color: ${({theme}) => theme["Base-Post"]};
+  }
+  & > pre > code {
+    color: #4F6173;
+  }
 `;
-
-export const CodePost = styled.div`
-  padding: 16px;
-  border-radius: 2px;
-  color: ${({theme}) => theme.white};
-  background-color: ${({theme}) => theme["Base-Post"]};
-`
-
-export const CodeLine = styled.p`
-  padding: 2px 0;
-  letter-spacing: 1px;
-  font-size: 0.9rem;
-  white-space: pre;
-`;
-
-export const CodeVar = styled.span`
-  color: #80ABD6;
-`;
-
-export const CodeValue = styled.span`
-  color: #6AD445;
-`;
-
-export const CodeComment = styled.span`
-  color: #4F6173;
-`
