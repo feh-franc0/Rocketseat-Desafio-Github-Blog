@@ -29,5 +29,6 @@ export const Content = styled.div`
     color: #4F6173;
     font-family: 'Nunito', sans-serif;
     font-weight: 400;
+    font-size: 1rem;
   }
 `;
