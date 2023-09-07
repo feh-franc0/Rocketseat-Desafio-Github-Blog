@@ -25,6 +25,13 @@ export const Header = styled.header`
 
 export const BackToHome = styled.div`
   color: ${({theme}) => theme.Blue};
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export const Content = styled.div`
@@ -94,5 +101,12 @@ export const IconTextLink = styled.a`
   div {
     display: flex;
     align-items: center;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `;

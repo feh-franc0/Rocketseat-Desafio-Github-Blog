@@ -83,5 +83,12 @@ export const IconTextLink = styled.a`
   div {
     display: flex;
     align-items: center;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    font-size: 0.9rem;
+    
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `;
