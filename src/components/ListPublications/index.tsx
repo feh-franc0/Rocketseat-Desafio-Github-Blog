@@ -3,11 +3,11 @@ import ListPosts from "../../contexts/ListPosts";
 import { useContext } from "react";
 import { differenceInDays, parseISO } from 'date-fns';
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { useNavigate } from 'react-router-dom'; // Importe useNavigate
+import { useNavigate } from 'react-router-dom';
 
 export function ListPublications() {
   const context = useContext(ListPosts);
-  const navigate = useNavigate(); // Obtenha a função navigate
+  const navigate = useNavigate();
 
   if (!context) {
     throw new Error("ListPostsContext not provided");
