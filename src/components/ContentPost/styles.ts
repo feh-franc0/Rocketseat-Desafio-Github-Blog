@@ -27,5 +27,7 @@ export const Content = styled.div`
   }
   & > pre > code {
     color: #4F6173;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
   }
 `;
