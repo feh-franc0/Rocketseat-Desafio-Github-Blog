@@ -12,6 +12,7 @@ export const Publication = styled.div`
   width: calc(50% - 16px);
   height: 260px;
   border-radius: 10px;
+  border: solid 2px transparent;
 
   text-align: center;
   box-sizing: border-box;
@@ -36,5 +37,9 @@ export const Publication = styled.div`
     margin-top: 20px;
     color: ${({theme}) => theme["Base-Text"]};
     text-align: left;
+  }
+
+  &:hover {
+    border: solid 2px ${({theme}) => theme["Base-Label"]};
   }
 `;
